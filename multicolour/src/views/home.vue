@@ -74,7 +74,7 @@
   </div>
 
   <!-- 轮播 -->
-  <el-carousel arrow="never" trigger="click" height="500px">
+  <el-carousel arrow="never" trigger="click" height="500px" pause-on-hover>
     <el-carousel-item v-for="item in pictures" :key="item">
       <el-image
         style="width: 100vw; height: 500px"
@@ -95,13 +95,13 @@ export default defineComponent({
   name: "Home",
   components: { Search },
   setup() {
-    // head 1
+    // 顶部菜单
     const activeIndex = ref("0");
     const handleSelect = (key: string, keyPath: string[]) => {
       console.log(key, keyPath);
     };
 
-    // head 2
+    // 搜索container
     const state = ref("");
     const links = ref<LinkItem[]>([]);
 
@@ -225,6 +225,10 @@ export default defineComponent({
   background-color: rgb(152, 218, 249);
   height: 60px;
   width: 100vw;
-  z-index: 10000;
+  z-index: 1000;
+}
+/* 视频 */
+.video {
+  width: 100vw;
 }
 </style>
