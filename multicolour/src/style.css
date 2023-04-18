@@ -30,6 +30,9 @@ a:hover {
 	display: none !important;
 
 }
+.el-input__wrapper.is-focus {
+  box-shadow: none !important;
+}
 body {
   margin: 0;
   /* display: flex;
