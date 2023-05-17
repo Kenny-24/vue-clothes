@@ -1,31 +1,36 @@
 <template>
   <header>
     <!-- 头部菜单栏 -->
-    <el-menu
-      :default-active="activeIndex"
-      class="el-menu-demo"
-      mode="horizontal"
-      background-color="#fff"
-      text-color="black"
-      active-text-color="grey"
-      @select="handleSelect"
-    >
-      <el-menu-item index="1"> 春 </el-menu-item>
-      <el-menu-item index="2"> 夏 </el-menu-item>
-      <el-menu-item index="3"> 秋 </el-menu-item>
-      <el-menu-item index="4"> 冬 </el-menu-item>
-
-      <div class="search-icon" @click="handleIconClick">
-        <el-icon v-if="!isSearch" class="el-input__icon">
-          <Search />
-        </el-icon>
-        <div v-else>取消</div>
-      </div>
-    </el-menu>
-
-    <!-- 搜索 -->
-    <SearchContent v-if="isSearch" />
+    <div class="header">
+      <el-menu
+        :default-active="activeIndex"
+        class="el-menu-demo"
+        mode="horizontal"
+        background-color="#fff"
+        text-color="black"
+        active-text-color="grey"
+        @select="handleSelect"
+      >
+        <div>
+          <img src="../assets/logo.svg" class="logo" alt="logo" />
+        </div>
+        <div class="menu-item">
+          <el-menu-item index="1"> 春 </el-menu-item>
+          <el-menu-item index="2"> 夏 </el-menu-item>
+          <el-menu-item index="3"> 秋 </el-menu-item>
+          <el-menu-item index="4"> 冬 </el-menu-item>
+        </div>
+        <div class="search-icon" @click="handleIconClick">
+          <el-icon v-if="!isSearch" class="el-input__icon">
+            <Search />
+          </el-icon>
+          <div v-else>取消</div>
+        </div>
+      </el-menu>
+      <SearchContent v-if="isSearch" />
+    </div>
   </header>
+  <div style="height: 58px"></div>
 
   <!-- 视频 -->
   <div class="video-container">
@@ -40,17 +45,13 @@
     ></video>
   </div>
   <!-- 轮播 -->
-  <!-- <Carousel /> -->
+  <Carousel />
 </template>
 <script lang="ts">
 import { ref, defineComponent, onMounted } from "vue";
 import Carousel from "@/common/carousel.vue";
 import SearchContent from "@/common/search.vue";
 import { Search } from "@element-plus/icons-vue";
-interface LinkItem {
-  value: string;
-  url: string;
-}
 export default defineComponent({
   name: "Home",
   components: { Search, Carousel, SearchContent },
@@ -77,19 +78,31 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-.el-menu-demo {
-  display: flex;
-  justify-content: center;
+.logo {
+  height: 2em;
 }
+.header {
+  position: fixed;
+  z-index: 999;
+}
+
+.el-menu-demo {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+.menu-item {
+  display: flex;
+  flex-direction: row;
+}
+
 .search-icon {
   user-select: none;
   cursor: pointer;
-  position: absolute;
   display: flex;
-  align-items: center;
-  top: 1.5em;
-  width: 5em;
-  right: 2px;
+  width: 50px;
 }
 
 /* 视频 */

@@ -13,7 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
+.el-menu--horizontal .el-menu-item:not(.is-disabled):focus, .el-menu--horizontal .el-menu-item:not(.is-disabled):hover{
+  background-color:#cecece2a !important
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -22,13 +24,25 @@ a {
 a:hover {
   color: #535bf2;
 }
+.el-menu--horizontal>.el-menu-item.is-active{
+  border-bottom: none !important;
+}
+.el-menu--horizontal>.el-menu-item{
+  border-bottom:none !important;
+  user-select: none;
+}
+.el-menu-item{
+  display: flex;
+  width: 100px !important;
+align-items: center;
+justify-content: center;
+}
 .el-sub-menu__title{
   padding:0 !important;
   padding: 12px 20px !important;
 }
 .el-sub-menu__icon-arrow{
 	display: none !important;
-
 }
 .el-input__wrapper.is-focus {
   box-shadow: none !important;
@@ -64,7 +78,6 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
 #app {
 }
 
